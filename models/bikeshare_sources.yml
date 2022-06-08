@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: bikeshare
+    tables:
+      - name: sf_bikeshare_trips
+      - name: sf_bikeshare_station_status
+      - name: sf_bikeshare_station_info
+      - name: sf_bikeshare_regions
+      - name: ny_bikeshare_trips
+      - name: ny_bikeshare_stations
