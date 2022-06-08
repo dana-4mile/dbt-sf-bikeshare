@@ -1,0 +1,55 @@
+version: 2
+
+models:
+    - name: bikeshare_trips
+      description: "Bikeshare trips from New York and San Francisco Systems"
+      columns:
+          - name: hash_trip_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+          - name: original_trip_id
+            description: "If available, the original trip ID within the bikeshare network. Trip IDs should be unique within a bikeshare network, but may not be unique within the table."
+          - name: city
+            description: "The city the bikeshare network for this trip is located in."
+          - name: duration_sec
+            description: "Time elapsed from trip start to end timestamp."
+          - name: start_timestamp
+            description: "Timestamp (UTC) of trip origination."
+          - name: start_station_name
+            description: "The human-readable name of the station where the trip originated."
+          - name: start_station_id
+            description: "The ID code of the station where the trip originated."
+          - name: end_timestamp
+            description: "Timestamp (UTC) of trip termination."
+          - name: end_station_name
+            description: "The human-readable name of the station where the trip terminated."
+          - name: end_station_id
+            description: "The ID code of the station where the trip terminated."
+          - name: bike_id
+            description: "The ID code of the bike used during the trip. Bike IDs should be unique within a network, but may not be unique across multiple networks."
+          - name: zip_code
+            description: "Customer zip code"
+          - name: subscriber_type
+            description: "For sf, Subscriber = annual or 30-day member; Customer = 24-hour or 3-day member. For ny, Customer = 24-hour pass or 7-day pass user, Subscriber = Annual Member"
+          - name: start_station_latitude
+            description: "Latitude value for start station"
+          - name: start_station_longitude
+            description: "Longitude value for start station"
+          - name: end_station_latitude
+            description: "Latitude value for end station"
+          - name: end_station_longitude
+            description: "Longitude value for end station"
+          - name: member_birth_year
+            description: "The year the member was born"
+          - name: member_gender
+            description: "The member's self-identified gender"
+          - name: start_station_geom
+            description: "A BigQuery Geo type datapoint of the start station location."
+          - name: end_station_geom
+            description: "A BigQuery geo type datapoint of the start station location."
+          - name: min_trip_distance_meters
+            description: "The shortest possible distance between the start and end stations for the trip in meters. Note that this is not an actual representation of distance traveled by user during the trip."
+          - name: is_returned_to_same_station
+            description: "A boolean flag than indicates whether or not the trip originated and terminated at the same station."

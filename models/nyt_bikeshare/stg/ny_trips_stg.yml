@@ -1,0 +1,12 @@
+version: 2
+
+models:
+    - name: ny_trips_stg
+      description: "Step 1 - Rename Fields and Create Unique Hash Key"
+      columns:
+          - name: hash_trip_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+    
