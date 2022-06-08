@@ -1,9 +1,18 @@
+{{ config(
+    materialized='table',
+    partition_by={
+      "field": "start_timestamp",
+      "data_type": "timestamp",
+      "granularity": "day"
+    }
+)}}
+
 with ny_trips as
 
 ( SELECT 
 
 md5(starttime||stoptime||bikeid||start_station_id||end_station_id) as hash_trip_id
-,null as original_trip_id
+,cast(null as string) as original_trip_id
 ,'ny' as city
 ,tripduration as duration_sec
 ,timestamp(starttime) as start_timestamp
@@ -13,7 +22,7 @@ md5(starttime||stoptime||bikeid||start_station_id||end_station_id) as hash_trip_
 ,end_station_name
 ,end_station_id
 ,bikeid as bike_id
-,null as zip_code
+,cast(null as string) as zip_code
 ,usertype as subscriber_type
 ,start_station_latitude
 ,start_station_longitude
@@ -35,7 +44,7 @@ where start_station_id is not null )
     SELECT
 
     *
-    ,dense_rank() over (partition by hash_trip_id order by duration_sec desc) rownum
+    ,row_number() over (partition by hash_trip_id order by duration_sec desc) rownum
 
     from ny_trips
 

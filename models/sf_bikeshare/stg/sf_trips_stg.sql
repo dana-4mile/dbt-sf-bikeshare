@@ -1,3 +1,14 @@
+{{ config(
+    materialized='table',
+    partition_by={
+      "field": "start_timestamp",
+      "data_type": "timestamp",
+      "granularity": "day"
+    }
+)}}
+
+with sf_trips as (
+
 SELECT 
 
 md5('sf'||trip_id) as hash_trip_id
@@ -24,4 +35,23 @@ md5('sf'||trip_id) as hash_trip_id
 ,st_distance(start_station_geom, end_station_geom) min_trip_distance_meters
 ,if(start_station_id = end_station_id, true, false) is_returned_to_same_station
 
-from {{ source('bikeshare', 'sf_bikeshare_trips') }}
+from {{ source('bikeshare', 'sf_bikeshare_trips') }} )
+
+, trips_ranked as (
+
+    SELECT
+
+    *
+    ,row_number() over (partition by hash_trip_id order by duration_sec desc) rownum
+
+    from sf_trips
+
+)
+
+select
+
+* except (rownum)
+
+from trips_ranked
+
+where rownum = 1 
