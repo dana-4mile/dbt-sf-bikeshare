@@ -2,6 +2,8 @@ version: 2
 
 models:
     - name: bikeshare_trips
+      meta:
+        label: "NY and SF Bikeshare Trips"
       description: "Bikeshare trips from New York and San Francisco Systems"
       columns:
           - name: hash_trip_id
@@ -12,48 +14,129 @@ models:
             meta:
               dimension:
                 label: 'MD5 Hash Trip ID' # this is the label you'll see in Lightdash
-                hidden: false
+              metrics:
+                total_trips:
+                  label: "Total Trips"
+                  type: count_distinct
           - name: original_trip_id
             description: "If available, the original trip ID within the bikeshare network. Trip IDs should be unique within a bikeshare network, but may not be unique within the table."
+            meta:
+              dimension:
+                label: 'Original Trip ID'
           - name: city
             description: "The city the bikeshare network for this trip is located in."
+            meta:
+              dimension:
+                label: 'City'
           - name: duration_sec
+            meta:
+              dimension:
+                label: 'Trip Duration'
+                hidden: true
+              metrics:
+                trip_duration:
+                  label: 'Total Trip Duration'
+                  type: sum
             description: "Time elapsed from trip start to end timestamp."
           - name: start_timestamp
             description: "Timestamp (UTC) of trip origination."
+            meta:
+              dimension:
+                label: 'Trip Start'
           - name: start_station_name
             description: "The human-readable name of the station where the trip originated."
+            meta:
+              dimension:
+                label: 'Trip Start Station Name'
           - name: start_station_id
             description: "The ID code of the station where the trip originated."
+            meta:
+              dimension:
+                label: 'Trip Start Station ID'
           - name: end_timestamp
             description: "Timestamp (UTC) of trip termination."
+            meta:
+              dimension:
+                label: 'Trip End'
           - name: end_station_name
             description: "The human-readable name of the station where the trip terminated."
+            meta:
+              dimension:
+                label: 'Trip End Station Name'
           - name: end_station_id
             description: "The ID code of the station where the trip terminated."
+            meta:
+              dimension:
+                label: 'Trip End Station ID'
           - name: bike_id
             description: "The ID code of the bike used during the trip. Bike IDs should be unique within a network, but may not be unique across multiple networks."
+            meta:
+              dimension:
+                label: 'Bike ID'
           - name: zip_code
             description: "Customer zip code"
+            meta:
+              dimension:
+                label: 'Customer Zip Code'
           - name: subscriber_type
             description: "For sf, Subscriber = annual or 30-day member; Customer = 24-hour or 3-day member. For ny, Customer = 24-hour pass or 7-day pass user, Subscriber = Annual Member"
+            meta:
+              dimension:
+                label: 'Subscriber Type'
           - name: start_station_latitude
             description: "Latitude value for start station"
+            meta:
+              dimension:
+                label: 'Start Station Latitude'
           - name: start_station_longitude
             description: "Longitude value for start station"
+            meta:
+              dimension:
+                label: 'Start Station Longitude' 
           - name: end_station_latitude
             description: "Latitude value for end station"
+            meta:
+              dimension:
+                label: 'End Station Latitude'   
           - name: end_station_longitude
             description: "Longitude value for end station"
+            meta:
+              dimension:
+                label: 'End Station Latitude'
           - name: member_birth_year
             description: "The year the member was born"
+            meta:
+              dimension:
+                label: 'Member Birth Year'
           - name: member_gender
             description: "The member's self-identified gender"
+            meta:
+              dimension:
+                label: 'Member Gender'
           - name: start_station_geom
             description: "A BigQuery Geo type datapoint of the start station location."
+            meta:
+              dimension:
+                label: 'Start Station Geolocation'
           - name: end_station_geom
             description: "A BigQuery geo type datapoint of the start station location."
+            meta:
+              dimension:
+                label: 'End Station Geolocation'
           - name: min_trip_distance_meters
             description: "The shortest possible distance between the start and end stations for the trip in meters. Note that this is not an actual representation of distance traveled by user during the trip."
+            meta:
+              dimension:
+                label: 'Minimum Trip Distance (Meters)'
+              metrics:
+                avg_trip_distance:
+                  label: 'Average Minimum Trip Distance (Meters)'
+                  type: average
+                total_trip_distance:
+                  label: 'Total Minimum Trip Distance (Meters)'
+                  type: sum
           - name: is_returned_to_same_station
             description: "A boolean flag than indicates whether or not the trip originated and terminated at the same station."
+            meta:
+              dimension:
+                label: 'Returned to same station?'
