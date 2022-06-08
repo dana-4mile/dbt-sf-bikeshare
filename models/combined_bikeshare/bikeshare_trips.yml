@@ -9,6 +9,10 @@ models:
             tests:
                 - unique
                 - not_null
+            meta:
+              dimension:
+                label: 'MD5 Hash Trip ID' # this is the label you'll see in Lightdash
+                hidden: false
           - name: original_trip_id
             description: "If available, the original trip ID within the bikeshare network. Trip IDs should be unique within a bikeshare network, but may not be unique within the table."
           - name: city
