@@ -113,7 +113,7 @@ models:
                 label: 'Member Birth Year'
               dimension:
                 label: 'Member Age'
-                sql: "date_diff(${trip_start},date(${member_birth_year}||'-01-01'),year)"
+                sql: "date_diff(date(${start_timestamp}),date(${member_birth_year}||'-01-01'),year)"
           - name: member_gender
             description: "The member's self-identified gender"
             meta:
