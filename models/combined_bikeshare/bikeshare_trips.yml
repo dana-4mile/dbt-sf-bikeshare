@@ -37,6 +37,9 @@ models:
                 trip_duration:
                   label: 'Total Trip Duration'
                   type: sum
+                avg_trip_duration:
+                  label: 'Average Trup Duration'
+                  type: average
             description: "Time elapsed from trip start to end timestamp."
           - name: start_timestamp
             description: "Timestamp (UTC) of trip origination."
@@ -108,6 +111,9 @@ models:
             meta:
               dimension:
                 label: 'Member Birth Year'
+              dimension:
+                label: 'Member Age'
+                sql: "date_diff(${trip_start},date(${member_birth_year}||'-01-01'),year)"
           - name: member_gender
             description: "The member's self-identified gender"
             meta:
