@@ -1,0 +1,88 @@
+version: 2
+models:
+  - name: bikeshare_stations
+    columns:
+      - name: station_id
+        description: "The ID of the station. Unique within a network, but not necesarrily across networks."
+        meta:
+          dimension:
+            type: number
+            label: "Station ID"
+      - name: city
+        description: "The City Code of the bikeshare network"
+        meta:
+          dimension:
+            type: string
+            label: "City"
+      - name: city_station_id
+        description: "City and Station ID concatenated. Unique within table."
+        meta:
+          dimension:
+            type: string
+            label: "City Station ID"
+      - name: name
+        description: "Human-readable name of station."
+        meta:
+          dimension:
+            type: string
+            label: "Station Name"
+      - name: short_name
+        description: "Short station name code"
+        meta:
+          dimension:
+            type: string
+            label: "Station Short Name"
+      - name: station_latitude
+        description: "Station Latitude"
+        meta:
+          dimension:
+            type: number
+            label: "Station Latitude"
+      - name: station_longitude
+        description: "Station Longitude"
+        meta:
+          dimension:
+            type: number
+            label: "Station Longitude"
+      - name: station_geom
+        description: "A BigQuery geo type datapoint of the station's location"
+        meta:
+          dimension:
+            type: string
+            label: "Station Geom"
+      - name: region_id
+        description: "Region ID"
+        meta:
+          dimension:
+            type: number
+            label: "Region ID"
+      - name: rental_methods
+        description: "Rental Methods"
+        meta:
+          dimension:
+            type: string
+            label: "Rental Methods"
+      - name: capacity
+        description: "Docks available at station."
+        meta:
+          dimension:
+            type: number
+            label: "Capacity"
+      - name: external_id
+        description: "External ID"
+        meta:
+          dimension:
+            type: string
+            label: "External ID"
+      - name: eightd_has_key_dispenser
+        description: "Has Key Dispenser?"
+        meta:
+          dimension:
+            type: boolean
+            label: "Has Key Dispenser?"
+      - name: has_kiosk
+        description: "Has Kiosk?"
+        meta:
+          dimension:
+            type: boolean
+            label: "Has Kiosk?"
