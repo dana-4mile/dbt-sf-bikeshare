@@ -4,6 +4,9 @@ models:
     - name: bikeshare_trips
       meta:
         label: "NY and SF Bikeshare Trips"
+            joins:
+              - join: bikeshare_stations
+                sql_on: ${bikeshare_trips.station_id} = ${bikeshare_stations.start_station_id} AND ${bikeshare_trips.city} = ${bikeshare_stations.city}
       description: "Bikeshare trips from New York and San Francisco Systems"
       columns:
           - name: hash_trip_id

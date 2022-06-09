@@ -1,8 +1,8 @@
 version: 2
 
 models:
-    - name: ny_stations
-      description: "Stations in the NYC Citibike System"
+    - name: sf_stations
+      description: "Stations in the San Francisco Bikeshare System"
       columns:
           - name: station_id
             description: "The primary key for this table"
