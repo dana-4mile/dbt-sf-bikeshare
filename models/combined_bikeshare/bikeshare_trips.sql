@@ -18,6 +18,7 @@ hash_trip_id
 ,end_station_latitude
 ,end_station_longitude
 ,member_birth_year
+,member_age
 ,member_gender
 ,start_station_geom
 ,end_station_geom
@@ -48,6 +49,7 @@ hash_trip_id
 ,end_station_latitude
 ,end_station_longitude
 ,member_birth_year
+,member_age
 ,member_gender
 ,start_station_geom
 ,end_station_geom

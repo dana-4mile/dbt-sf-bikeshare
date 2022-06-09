@@ -29,6 +29,7 @@ md5('sf'||trip_id) as hash_trip_id
 ,end_station_latitude
 ,end_station_longitude
 ,member_birth_year
+,date_diff(date(start_date),date(member_birth_year||'-01-01'),year) member_age
 ,member_gender
 ,start_station_geom
 ,end_station_geom

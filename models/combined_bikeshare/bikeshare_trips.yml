@@ -111,9 +111,11 @@ models:
             meta:
               dimension:
                 label: 'Member Birth Year'
+          - name: member_age
+            description: "The age of the member at the time of the trip"
+            meta:
               dimension:
-                label: 'Member Age'
-                sql: "date_diff(date(${start_timestamp}),date(${member_birth_year}||'-01-01'),year)"
+                label: 'Member Birth Year'
           - name: member_gender
             description: "The member's self-identified gender"
             meta:

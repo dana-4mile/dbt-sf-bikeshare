@@ -29,6 +29,7 @@ md5(starttime||stoptime||bikeid||start_station_id||end_station_id) as hash_trip_
 ,end_station_latitude
 ,end_station_longitude
 ,birth_year as member_birth_year
+,date_diff(date(starttime),date(birth_year||'-01-01'),year) member_age
 ,gender as member_gender
 ,st_geogpoint(start_station_longitude, start_station_latitude) start_station_geom
 ,st_geogpoint(end_station_longitude, end_station_latitude) end_station_geom
