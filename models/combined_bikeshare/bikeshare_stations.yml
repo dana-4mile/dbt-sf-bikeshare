@@ -1,6 +1,8 @@
 version: 2
 models:
   - name: bikeshare_stations
+    meta:
+      label: "NY and SF Bikeshare Stations"
     columns:
       - name: station_id
         description: "The ID of the station. Unique within a network, but not necesarrily across networks."
