@@ -1,6 +1,6 @@
 SELECT 
 
-station_id
+cast(station_id as string) station_id
 ,'ny' as city
 ,'ny_'||station_id as city_station_id
 ,name
