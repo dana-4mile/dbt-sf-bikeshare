@@ -15,4 +15,4 @@ station_id
 ,eightd_has_key_dispenser
 ,has_kiosk
 
-FROM {{ source('bikeshare', 'sf_bikeshare_station_info') }}
+FROM {{ source('dholmes_lightdash_demo', 'sf_bikeshare_station_info') }}

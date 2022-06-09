@@ -36,7 +36,7 @@ md5(starttime||stoptime||bikeid||start_station_id||end_station_id) as hash_trip_
 ,st_distance(st_geogpoint(start_station_longitude, start_station_latitude), st_geogpoint(end_station_longitude, end_station_latitude)) min_trip_distance_meters
 ,if(start_station_id = end_station_id, true, false) is_returned_to_same_station
 
-from {{ source('bikeshare', 'ny_bikeshare_trips') }}
+from {{ source('dholmes_lightdash_demo', 'ny_bikeshare_trips') }}
 
 where start_station_id is not null )
 
