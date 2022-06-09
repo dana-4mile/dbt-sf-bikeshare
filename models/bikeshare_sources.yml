@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: bikeshare
+  - name: dholmes_lightdash_demo
     tables:
       - name: sf_bikeshare_trips
       - name: sf_bikeshare_station_status
