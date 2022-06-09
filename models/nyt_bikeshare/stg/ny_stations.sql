@@ -15,4 +15,4 @@ station_id
 ,eightd_has_key_dispenser
 ,cast(null as boolean) has_kiosk
 
-FROM {{ source('bikeshare', 'ny_bikeshare_stations') }}
+FROM {{ source('dholmes_lightdash_demo', 'ny_bikeshare_stations') }}

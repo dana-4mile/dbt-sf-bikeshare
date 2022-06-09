@@ -9,7 +9,7 @@
 
 with sf_trips as (
 
-SELECT 
+SELECT
 
 md5('sf'||trip_id) as hash_trip_id
 ,trip_id as original_trip_id
@@ -36,7 +36,7 @@ md5('sf'||trip_id) as hash_trip_id
 ,st_distance(start_station_geom, end_station_geom) min_trip_distance_meters
 ,if(start_station_id = end_station_id, true, false) is_returned_to_same_station
 
-from {{ source('bikeshare', 'sf_bikeshare_trips') }} )
+from {{ source('dholmes_lightdash_demo', 'sf_bikeshare_trips') }} )
 
 , trips_ranked as (
 
@@ -55,4 +55,4 @@ select
 
 from trips_ranked
 
-where rownum = 1 
+where rownum = 1
