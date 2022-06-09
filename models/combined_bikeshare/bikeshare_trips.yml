@@ -4,6 +4,9 @@ models:
     - name: bikeshare_trips
       meta:
         label: "NY and SF Bikeshare Trips"
+        joins:
+          - join: bikeshare_stations
+            sql_on: ${bikeshare_trips.station_id} = ${bikeshare_stations.start_station_id} AND ${bikeshare_trips.city} = ${bikeshare_stations.city}
       description: "Bikeshare trips from New York and San Francisco Systems"
       columns:
           - name: hash_trip_id
@@ -95,12 +98,12 @@ models:
             description: "Longitude value for start station"
             meta:
               dimension:
-                label: 'Start Station Longitude' 
+                label: 'Start Station Longitude'
           - name: end_station_latitude
             description: "Latitude value for end station"
             meta:
               dimension:
-                label: 'End Station Latitude'   
+                label: 'End Station Latitude'
           - name: end_station_longitude
             description: "Longitude value for end station"
             meta:
@@ -111,9 +114,11 @@ models:
             meta:
               dimension:
                 label: 'Member Birth Year'
+          - name: member_age
+            description: "The age of the member at the time of the trip"
+            meta:
               dimension:
-                label: 'Member Age'
-                sql: "date_diff(date(${start_timestamp}),date(${member_birth_year}||'-01-01'),year)"
+                label: 'Member Birth Year'
           - name: member_gender
             description: "The member's self-identified gender"
             meta:
